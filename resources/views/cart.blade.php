@@ -5,16 +5,26 @@
 <style>
 
     th {
-        background-color: #ff4081;
+        background-color: #78909c;
         color: white;
     }
 
-    tr:nth-child(even) {background-color: #fce4ec}
+    tr:nth-child(even) {
+        background-color: #cfd8dc;
+    }
 
     h1 {
         font-family: "bradley hand itc";
         font-weight: bolder;
     }
+
+    p{
+        font-family: "bradley hand itc";
+        font-weight: bolder;
+        font-size: 1.5em;
+    }
+
+
 
 </style>
 
@@ -68,8 +78,9 @@
                             <form action="{{ url('cart', $item->id) }}" method="POST" class="side-by-side">
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="_method" value="DELETE">
-                                <input type="submit" class="btn btn-danger btn-sm" value="Remove">
+                                <input type="submit" id="btn" class="btn btn-danger btn-sm" value="Remove">
                             </form>
+
 
                             <form action="#" method="POST" class="side-by-side">
                                 {!! csrf_field() !!}
@@ -80,7 +91,7 @@
                     <tr class="border-bottom">
                         <td class="table-image"></td>
                         <td style="padding: 40px;"></td>
-                        <td class="small-caps table-bg" style="text-align: right">Your Total</td>
+                        <td class="small-caps table-bg" style="text-align: right"><strong>Your Total</strong></td>
                         <td class="table-bg">P{{ $total_amount }}</td>
                         <td class="column-spacer"></td>
                         <td></td>
@@ -89,14 +100,31 @@
             </table>
 
             <br><br><br>
-            <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
-            <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
+                <a href="{{ url('/shop') }}" id="btn" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
+                <br><br>
+
+            <form>
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="upload" value="1">
+            <input type="hidden" name="business" value="musicart@gmail.com">
+
+            <?php $count = 0; ?>
+            @foreach($items as $item)
+            <?php $count++; ?>
+            <input type="hidden" name="item_name_{{ $count }}" value="{{ $item->product->name }}">
+            <input type="hidden" name="amount_{{ $count }}" value="{{ $item->price }}">
+            <input type="hidden" name="quantity_{{ $count }}" value="{{ $item->quantity }}">
+            <input type="hidden" name="shipping_{{ $count }}" value="150">
+            @endforeach
+            <h3>Checkout:</h3><input type="image" name="submit" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_150x38.png" formaction="https://www.sandbox.paypal.com/cgi-bin/webscr" value="PayPal">
+            </form>
+
 
             <div style="float:right">
                 <form action="{{ url('/emptyCart') }}" method="POST">
                     {!! csrf_field() !!}
                     <input type="hidden" name="_method" value="DELETE">
-                    <input type="submit" class="btn btn-danger btn-lg" value="Empty Cart">
+                    <input type="submit" id="btn" class="btn btn-danger btn-lg" value="Empty Cart">
                 </form>
             </div>
             @else 

@@ -24,10 +24,12 @@
     @yield('extra-css')
 
     <!-- Favicon and Apple Icons -->
-    <link rel="shortcut icon" href="{{ asset('img/musicartlogo.gif') }}">
+    <link rel="shortcut icon" href="{{ asset('img/musicart1.png') }}">
 
     <style>
-
+        body{
+            background-color: #eceff1;
+        }
         .spacer {
             margin-bottom: 100px;
         }
@@ -37,7 +39,7 @@
         }
 
         footer {
-            background-color: #f8bbd0;
+            background-color: #cfd8dc;
             padding: 20px 0;
         }
 
@@ -53,7 +55,7 @@
             font-family: "bradley hand itc";
             font-weight: bolder;
             font-size: 1.5em;
-            background-color: #f8bbd0; 
+            background-color: #cfd8dc; 
 
         }
 
@@ -61,6 +63,14 @@
             overflow: scroll;
         }
 
+        .nav:hover{
+            color: black;
+        }
+
+        .dropdown-menu{
+            font-family: "bradley hand itc";
+            font-weight: bolder;
+        }
 
     </style>
 </head>
@@ -68,7 +78,7 @@
 
     <header>
 
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-static-top">
           <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -87,7 +97,7 @@
 
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li class=><a href="{{ url('/cart') }}">Cart</a></li>
+                <li><a href="{{ url('/cart') }}">Cart</a></li>
                 @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
@@ -101,8 +111,8 @@
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
+                                                     document.getElementById('logout-form').submit();"><strong>
+                                            Logout</strong>
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

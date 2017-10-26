@@ -3,7 +3,9 @@
 
 @section('content')
 
+<div class="whole">
 <style> 
+
 
     .jumbotron{
         background-image: url("img/colorful.jpg");
@@ -26,9 +28,6 @@
         font-weight: bolder;
     }
 
-    .row.a{
-        size: 
-    }
 
     .product-img {
         width: 150px;
@@ -38,6 +37,17 @@
     .thumbnail{
         height: 350px;
     }
+
+    .thumbnail{
+        background: linear-gradient(#90caf9, #cfd8dc);
+        border-radius: 20px;
+    }
+
+    .thumbnail:hover{
+        background-color: #eceff1;
+    }
+
+ 
 
 </style>
 
@@ -54,7 +64,6 @@
             </p>
             -->
         </div> <!-- end jumbotron -->
-
 
             <div class="row">
                 @if (!empty($products))
@@ -78,8 +87,6 @@
                     Empty!
                 @endif
             </div> <!-- end row -->
-
-
     </div> <!-- end container -->
-
+</div>
 @endsection

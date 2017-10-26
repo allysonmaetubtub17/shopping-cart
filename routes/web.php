@@ -21,6 +21,15 @@ Route::resource('cart', 'CartController');
 
 Route::delete('emptyCart', 'CartController@emptyCart');
 
+
+Route::get('/billing', function(){
+	return view('billing');
+});
+
+Route::get('/shipping', function(){
+	return view('shipping');
+});
+
 /*
 Route::get('/invoice', function(){
 	return view('invoice');

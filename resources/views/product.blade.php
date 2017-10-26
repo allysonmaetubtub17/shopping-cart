@@ -2,6 +2,13 @@
 
 @section('content')
 
+<style>
+        img{
+            width: 100%;
+            height: 50%;
+        }
+</style>
+
     <div class="container">
         <p><a href="{{ url('/shop') }}">Shop</a> / View Product</p>
         <h1>{{ $product->name  }}</h1>
